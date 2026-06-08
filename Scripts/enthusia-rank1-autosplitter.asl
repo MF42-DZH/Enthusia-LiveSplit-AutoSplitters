@@ -2,10 +2,10 @@ state("PCSX2-qt") { }
 
 startup {
     Assembly.Load(File.ReadAllBytes("Components/emu-help-v3")).CreateInstance("PS2");
-    
+
     vars.Log = (Action<object>) (output => print("[Enthusia: Professional Racing] " + output));
     vars.Splits = new HashSet<string>();
-    
+
     // Pointer Sources: https://retroachievements.org/codenotes.php?g=21944
     // ASL code: Azullia
     // Pointer & Value Sources: xp
@@ -44,7 +44,9 @@ start {
 split {
     if (vars.Screen.Current != 0xCE787) return false;
 
-    if (vars.Message.Current == 0x13 && vars.Message.Old == 0x13 && vars.Splits.Add("RIV")) {
+    // If you've made it into RIII, you've probably also completed the requirements to unlock RIV.
+    // So we can also check if RIII has been split, and then split as well if so.
+    if ((vars.Splits.Contains("RIII") || (vars.Message.Current == 0x13 && vars.Message.Old == 0x13)) && vars.Splits.Add("RIV")) {
         vars.Log("Unlocked RIV");
         return true;
     }
@@ -58,17 +60,17 @@ split {
         vars.Log("Reached RII (Top 500)");
         return true;
     }
-    
+
     if (vars.Message.Current != 0 && vars.Ranking.Current <= 300 && vars.Splits.Add("RI")) {
         vars.Log("Reached RI (Top 300)");
         return true;
     }
-    
+
     if (vars.Message.Current != 0 && vars.Ranking.Current <= 50 && vars.Splits.Add("RS")) {
         vars.Log("Reached RS (Top 50)");
         return true;
     }
-    
+
     if (vars.Message.Current != 0 && vars.Ranking.Current <= 1 && vars.Splits.Add("Rank 1")) {
         vars.Log("Reached Rank 1");
         return true;

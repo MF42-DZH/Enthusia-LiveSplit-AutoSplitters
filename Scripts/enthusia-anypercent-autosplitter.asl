@@ -67,14 +67,16 @@ split {
         vars.Log("Retired from Week 1");
         return true;
     }
-    
+
     if (vars.PlayerStatus.Current == 0x4C && vars.PlayerStatus.Old != 0x4C && vars.WeeksPassed.Current > 0 && vars.Splits.Add("Skip")) {
         vars.Log("Skipped Weeks");
         return true;
     }
-    
+
     if (vars.Screen.Current == 0xCE787) {
-        if (vars.Message.Current == 0x13 && vars.Message.Old == 0x13 && vars.Splits.Add("RIV")) {
+        // If you've made it into RIII, you've probably also completed the requirements to unlock RIV.
+        // So we can also check if RIII has been split, and then split as well if so.
+        if ((vars.Splits.Contains("RIII") || (vars.Message.Current == 0x13 && vars.Message.Old == 0x13)) && vars.Splits.Add("RIV")) {
             vars.Log("Unlocked RIV");
             return true;
         }
@@ -103,10 +105,10 @@ split {
             vars.Log("Reached Top 6");
             return true;
         }
-        
+
         return false;
     }
-    
+
     if (vars.InKingOfTheYear && vars.PlayerRaceFinished.Current == 4 && vars.PlayerRaceFinished.Old != 4 && vars.Position.Current == 0 && vars.Splits.Add("KOTY")) {
         vars.Log("Won King of the Year");
         return true;
