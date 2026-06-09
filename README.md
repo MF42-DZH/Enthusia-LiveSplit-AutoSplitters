@@ -6,7 +6,7 @@ Currently, these scripts only work for the NTSC-U version of Enthusia: Professio
 
 1. `git clone --recurse-submodules https://github.com/MF42-DZH/Enthusia-LiveSplit-AutoSplitters.git` or get a release from the **Releases** tab.
 2. Locate your LiveSplit install folder.
-3. Put "emu-help-v3/lib/LiveSplit/emu-help-v3" in the "Components" subfolder of the LiveSplit install folder.
+3. Put "emu-help-v3/lib/LiveSplit/emu-help-v3" (or just "emu-help-v3" from a release) in the "Components" subfolder of the LiveSplit install folder.
 4. Open PCSX2.
 5. Open the "Edit Layout" window, add a "Scriptable Auto Splitter" component.
 6. Open "Layout Settings", go to "Scriptable Auto Splitter", and load in the auto splitter file of the category you are doing.
