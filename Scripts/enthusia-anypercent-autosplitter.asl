@@ -32,6 +32,7 @@ startup {
     vars.ELMenuSelect       = vars.Helper.Make<byte>(0x004F2E40);
     vars.OButton            = vars.Helper.Make<byte>(0x00376F4D);
     vars.XButton            = vars.Helper.Make<byte>(0x00376F4E);
+    vars.WheelButtons       = vars.Helper.Make<byte>(0x00378222);
     vars.PlayerRaceFinished = vars.Helper.Make<byte>(0x00426458, 0x19C, 0x1DF0);
     vars.CurrentRace        = vars.Helper.Make<float>(0x004A3F80, 0x2930);
     vars.PlayerStatus       = vars.Helper.Make<byte>(0x004A3150);
@@ -54,7 +55,7 @@ update {
 }
 
 start {
-    if (vars.MainMenuSelect.Current == 0x06 && vars.ELMenuSelect.Current == 0x80 && ((vars.OButton.Current != 0 && vars.OButton.Old == 0) || (vars.XButton.Current != 0 && vars.XButton.Old == 0))) {
+    if (vars.MainMenuSelect.Current == 0x06 && vars.ELMenuSelect.Current == 0x80 && ((vars.OButton.Current != 0 && vars.OButton.Old == 0)|| (vars.XButton.Current != 0 && vars.XButton.Old == 0) || ((vars.WheelButtons.Current & 1) != 0 && (vars.WheelButtons.Old & 1) == 0) || ((vars.WheelButtons.Current & 4) != 0 && (vars.WheelButtons.Old & 4) == 0))) {
         vars.Log("Started Timer for Any%!");
         return true;
     }
