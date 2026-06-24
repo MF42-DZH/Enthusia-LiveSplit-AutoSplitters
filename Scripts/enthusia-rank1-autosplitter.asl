@@ -52,27 +52,27 @@ split {
         return true;
     }
 
-    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 800 && vars.Ranking.Old <= 800 && vars.Splits.Add("RIII")) {
+    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 800 && vars.Ranking.Old <= vars.Ranking.Current && vars.Splits.Add("RIII")) {
         vars.Log("Reached RIII (Top 800)");
         return true;
     }
 
-    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 500 && vars.Ranking.Old <= 500 && vars.Splits.Add("RII")) {
+    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 500 && vars.Ranking.Old <= vars.Ranking.Current && vars.Splits.Add("RII")) {
         vars.Log("Reached RII (Top 500)");
         return true;
     }
 
-    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 300 && vars.Ranking.Old <= 300 && vars.Splits.Add("RI")) {
+    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 300 && vars.Ranking.Old <= vars.Ranking.Current && vars.Splits.Add("RI")) {
         vars.Log("Reached RI (Top 300)");
         return true;
     }
 
-    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 50 && vars.Ranking.Old <= 50 && vars.Splits.Add("RS")) {
+    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 50 && vars.Ranking.Old <= vars.Ranking.Current && vars.Splits.Add("RS")) {
         vars.Log("Reached RS (Top 50)");
         return true;
     }
 
-    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 1 && vars.Ranking.Old <= 1 && vars.Splits.Add("Rank 1")) {
+    if (vars.Message.Current != 0 && vars.Message.Old != 0 && vars.Ranking.Current <= 1 && vars.Ranking.Old <= vars.Ranking.Current && vars.Splits.Add("Rank 1")) {
         vars.Log("Reached Rank 1");
         return true;
     }
